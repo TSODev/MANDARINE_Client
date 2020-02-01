@@ -10,7 +10,6 @@ export const logoutStart = () => {
 
 
 export const logoutSuccess = (authData) => {
-    console.log('Action Success : ', authData);
     return {
         type: actions.LOGOUT_SUCCESS,
         authData: authData
@@ -31,7 +30,6 @@ export const logOut = () => {
         }
         axios.post('/logout', logoutInfo)
             .then(response => {
-                console.log('logout : ',response.data);
                 dispatch(logoutSuccess(response.data))
             })
             .catch(err => {

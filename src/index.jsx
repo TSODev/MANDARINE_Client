@@ -8,8 +8,8 @@ import thunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import genericReducer from './store/reducers/reducer';
-import authReducer from './store/reducers/Auth';
+import genericReducer from './MainStore/reducers/reducer';
+import authReducer from './MainStore/reducers/Auth';
 import './index.css';
 import App from './App';
 import theme from './theme';

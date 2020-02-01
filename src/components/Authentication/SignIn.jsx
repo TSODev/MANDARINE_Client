@@ -24,7 +24,7 @@ import Fade from "@material-ui/core/Fade";
 import Backdrop from "@material-ui/core/Backdrop";
 import Spinner from "../UI/Spinner";
 
-import * as actions from "../../store/actions/index";
+import * as actions from "../../MainStore/actions/index";
 
 function Copyright() {
   return (

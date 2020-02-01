@@ -17,7 +17,7 @@ import SignIn from '../../Authentication/SignIn';
 import SignUp from '../../Authentication/SignUp';
 import UserProfileMenu from '../../Navigation/NavMenu/UserProfileMenu';
 
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../../MainStore/actions/index';
 
 
 const useStyles = makeStyles(theme => ({

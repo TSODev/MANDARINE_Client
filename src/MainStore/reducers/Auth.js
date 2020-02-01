@@ -1,7 +1,6 @@
 import * as actiontypes from '../actions/actionTypes';
 
 import { updateObject } from '../../utilities/utils';
-import * as actions from '../actions/Auth/SignIn';
 
 const initialState = {
     token: '',
@@ -31,10 +30,7 @@ const signinStart = ( state, action ) => {
 }
 
 const signinSuccess = ( state, action) => {
-    console.log('SignIn Success : ' , action);
     return updateObject(state, {
-//        token: action.authData.email,
-//        userId: action.authData.user_id,
         email: action.authData.email,
         firstname: action.authData.firstname,
         lastname: action.authData.lastname,
@@ -69,7 +65,6 @@ const signupStart = ( state, action ) => {
 }
 
 const signupSuccess = ( state, action ) => {
-    console.log('SignUp Success : ' , action);
     return updateObject(state, {
         token: action.authData.user.passwordDigest,
         userId: action.authData.user.user_id,
@@ -94,7 +89,6 @@ const logoutStart = ( state, action ) => {
 }
 
 const logoutSuccess = ( state, action ) => {
-    console.log('LogoutUp Success : ' , action);
     return updateObject(state, {
         token: '',
         userId: '',
@@ -117,8 +111,6 @@ const logoutFail = ( state, action ) => {
 
 
 const reducer = (state = initialState, action) => {
-
-    console.log('Reducer : ', action);
     switch (action.type) {
         case actiontypes.SIGNIN_SHOWMODAL: return signinShow(state, action);
         case actiontypes.SIGNIN_START: return signinStart(state, action);

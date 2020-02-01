@@ -15,7 +15,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 
 
-import * as actions from '../../../store/actions/index';
+import * as actions from '../../../MainStore/actions/index';
 
 const useStyles = makeStyles(theme => ({
     root: {

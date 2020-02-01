@@ -22,7 +22,6 @@ export const signinStart = () => {
 
 
 export const signinSuccess = (authData) => {
-    console.log('Action Success : ', authData);
     return {
         type: actions.SIGNIN_SUCCESS,
         authData: authData
@@ -45,11 +44,9 @@ export const signIn = (email, password) => {
         }
         axios.post('/login', userInfo)
             .then(response => {
-                console.log('Login : ',response.data);
                 dispatch(signinSuccess(response.data))
             })
             .catch(err => {
-                console.log('Error : ', err);
                 dispatch(signinFail(err));
              } )
     };
