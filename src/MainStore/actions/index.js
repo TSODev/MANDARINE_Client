@@ -11,3 +11,8 @@ export {
 export {
     logOut,
 } from './Auth/Logout';
+
+export {
+    showError,
+    closeError,
+} from './Error/Error';

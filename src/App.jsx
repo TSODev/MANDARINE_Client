@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import NavigationAppBar from './components/Navigation/AppBar/NavigationAppBar';
+import ErrorBar from './components/Error/Error';
 
 
 import { Route } from 'react-router-dom';
@@ -16,6 +17,7 @@ class App extends Component {
     return (
       <div className='App'>
         <NavigationAppBar appName="MANDARINE"/>
+        <ErrorBar duration={4000}/>
       </div>
     );
   }

@@ -10,6 +10,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import genericReducer from './MainStore/reducers/reducer';
 import authReducer from './MainStore/reducers/Auth';
+import errorReducer from './MainStore/reducers/Error';
 import './index.css';
 import App from './App';
 import theme from './theme';
@@ -18,6 +19,7 @@ import * as serviceWorker from './serviceWorker';
 const rootReducer = combineReducers({
     generic: genericReducer,
     auth: authReducer,
+    error: errorReducer,
 });
 
 // declare global {

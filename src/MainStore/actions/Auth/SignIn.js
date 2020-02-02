@@ -35,6 +35,13 @@ export const signinFail = (error) => {
     };
 };
 
+export const error = (error) => {
+    return {
+        type: actions.ERROR_SHOW,
+        error : { severity: error.severity, message: error.message},
+    } 
+}
+
 export const signIn = (email, password) => {
     return (dispatch) => {
         dispatch(signinStart());
@@ -48,6 +55,12 @@ export const signIn = (email, password) => {
             })
             .catch(err => {
                 dispatch(signinFail(err));
+                if (err.response) {
+                    console.log(err.response.data);
+                    console.log(err.response.status);
+                    console.log(err.response.headers);
+                  }
+                dispatch(error({severity: "error", message: err.response.data}));
              } )
     };
 };

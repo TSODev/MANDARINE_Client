@@ -16,6 +16,7 @@ import Button from '@material-ui/core/Button';
 
 
 import * as actions from '../../../MainStore/actions/index';
+import * as utils from '../../../utilities/utils';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -58,11 +59,10 @@ const UserProfileMenu = (props) => {
         props.onClose();
     }
 
-    const capitalize = name => name.charAt(0).toUpperCase() + name.slice(1);
 
     function FullName() {
-      const first = capitalize(props.firstname);
-      const last = capitalize(props.lastname);
+      const first = utils.capitalize(props.firstname);
+      const last = utils.capitalize(props.lastname);
       return (
         first.concat(' ').concat(last)
       )

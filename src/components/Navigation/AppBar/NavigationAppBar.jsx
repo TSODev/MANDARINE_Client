@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     '& > *': {
-      margin: theme.spacing(1),
     },
   },
   menuButton: {
