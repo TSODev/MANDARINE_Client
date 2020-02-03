@@ -2,7 +2,6 @@ import React, { useReducer} from "react";
 import { connect } from "react-redux";
 import {
   Link as RouterLink,
-  LinkProps as RouterLinkProps
 } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";

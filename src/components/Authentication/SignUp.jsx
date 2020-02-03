@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { connect } from "react-redux";
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -122,6 +122,7 @@ export const SignUp = (props) => {
     props.onRegister(signUpState.email, signUpState.password, signUpState.firstname, signUpState.lastname);
   }
 
+
   function Loading() {
     if (props.loading) {
       return <Spinner />;
@@ -156,7 +157,7 @@ export const SignUp = (props) => {
               Sign up
             </Typography>
             <Loading />
-            <form onSubmit={onSubmitForm} className={classes.form} noValidate>
+            <form onSubmit={onSubmitForm} className={classes.form}>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField

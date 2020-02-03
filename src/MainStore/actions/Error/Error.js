@@ -15,19 +15,13 @@ export const errorClose = () => {
 }
 
 export const showError = (err) => {
-    console.log(err);
     return (dispatch) => {
-        const error = {
-            severity: err.severity,
-            message: err.message,
-        }
         dispatch(errorShow(err));
     }
 }
 
 export const closeError = () => {
     return (dispatch) => {
-        console.log('dispatch Closing');
         dispatch(errorClose());
     }
 }

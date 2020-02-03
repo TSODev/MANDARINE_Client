@@ -33,6 +33,13 @@ export const registerFail = (error) => {
     };
 };
 
+export const error = (error) => {
+    return {
+        type: actions.ERROR_SHOW,
+        error : { severity: error.severity, message: error.message},
+    } 
+}
+
 export const register = (email, password, firstname, lastname) => {
     return (dispatch) => {
         dispatch(registerStart());
@@ -52,6 +59,7 @@ export const register = (email, password, firstname, lastname) => {
             .catch(err => {
                 console.log('Error : ', err);
                 dispatch(registerFail(err));
+                dispatch(error({severity: "error", message: err.message}));
              } )
     };
 };

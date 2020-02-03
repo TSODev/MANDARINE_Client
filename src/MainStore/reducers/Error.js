@@ -9,7 +9,6 @@ const initialState = {
 }
 
 const errorShow = (state, action) => {
-    console.log(action);
     return updateObject(state, {
         open: true,
         severity: action.error.severity,

@@ -1,5 +1,6 @@
 import axios from '../../../axios-atlas';
 import * as actions from '../actionTypes'
+import * as utils from '../../../utilities/utils';
 //import * as type from '../types/AuthTypes';
 
 export const signinShow = () => {
@@ -55,12 +56,7 @@ export const signIn = (email, password) => {
             })
             .catch(err => {
                 dispatch(signinFail(err));
-                if (err.response) {
-                    console.log(err.response.data);
-                    console.log(err.response.status);
-                    console.log(err.response.headers);
-                  }
-                dispatch(error({severity: "error", message: err.response.data}));
+                dispatch(error({severity: "error", message: err.message}));
              } )
     };
 };

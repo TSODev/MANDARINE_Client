@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Menu from '@material-ui/core/Menu';
@@ -10,9 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 
 
 import * as actions from '../../../MainStore/actions/index';
@@ -49,13 +48,15 @@ const useStyles = makeStyles(theme => ({
 
 const UserProfileMenu = (props) => {
     const classes = useStyles();
+
+    const history = useHistory();
     
     const disconnectHandler = (event) => {
         props.onLogout();
     }
 
     const profileMenuHandler = (event) => {
-        console.log('Route to Profile Page for user_id : ', props.userId);
+        history.push('/user/profile/' + props.userId);
         props.onClose();
     }
 

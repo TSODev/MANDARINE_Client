@@ -19,8 +19,6 @@ const useStyles = makeStyles(theme => ({
 
 const ErrorBar = React.forwardRef((props, ref) => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-
 
 
   const closeHandler = () => {
@@ -30,6 +28,7 @@ const ErrorBar = React.forwardRef((props, ref) => {
   const anchorOrigin = { vertical: 'bottom', horizontal: 'center' };
   const severityMessage = utils.capitalize(props.severity);
 
+  
   return (
     <div ref= {ref} className={classes.root}>
       <Snackbar

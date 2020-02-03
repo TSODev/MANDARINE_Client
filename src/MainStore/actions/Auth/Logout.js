@@ -23,6 +23,13 @@ export const logoutFail = (error) => {
     };
 };
 
+export const error = (error) => {
+    return {
+        type: actions.ERROR_SHOW,
+        error : { severity: error.severity, message: error.message},
+    } 
+}
+
 export const logOut = () => {
     return (dispatch) => {
         dispatch(logoutStart());
@@ -35,6 +42,7 @@ export const logOut = () => {
             .catch(err => {
                 console.log('Error : ', err);
                 dispatch(logoutFail(err));
+                dispatch(error({severity: "error", message: err.message}));
              } )
     };
 };
