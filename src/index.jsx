@@ -7,10 +7,12 @@ import thunk from 'redux-thunk';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { ConfirmProvider } from 'material-ui-confirm';
 
 import genericReducer from './MainStore/reducers/reducer';
 import authReducer from './MainStore/reducers/Auth';
 import errorReducer from './MainStore/reducers/Error';
+import userReducer from './MainStore/reducers/User';
 import './index.css';
 import App from './App';
 import theme from './theme';
@@ -20,6 +22,7 @@ const rootReducer = combineReducers({
     generic: genericReducer,
     auth: authReducer,
     error: errorReducer,
+    user: userReducer,
 });
 
 // declare global {
@@ -35,9 +38,11 @@ const app = (
   <BrowserRouter>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <App />
+        <ConfirmProvider>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <App />
+        </ConfirmProvider>
       </ThemeProvider>
     </Provider>
   </BrowserRouter>

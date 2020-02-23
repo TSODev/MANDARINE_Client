@@ -18,6 +18,7 @@ const theme = createMuiTheme({
       paper: '#eee',
       grey1: '#aaa',
       grey2: '#888',
+      white: '#fff',
     },
   },
 });

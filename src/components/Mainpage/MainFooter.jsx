@@ -14,12 +14,12 @@ const MainFooter = props => {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Typography
+            {/* <Typography
                 align="center"
                 color='textPrimary'
                 variant="h5">
                 Main Footer
-            </Typography>
+            </Typography> */}
             
         </React.Fragment>
     )

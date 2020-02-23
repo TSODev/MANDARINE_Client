@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -97,7 +98,7 @@ const UserProfile = (props) => {
             console.log('[User Profile] - useEffect');
             
                 dispatchProfile({type: 'QUERY_START'});
-                axios.get('/userError/' + userId)
+                axios.get('/user/' + userId)
                     .then ( response => dispatchProfile({type: 'QUERY_SUCCESS', user: response.data.user}))
                     .catch ( err  => {
                       dispatchProfile({type: 'QUERY_FAIL', error: err.response.data});
