@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -9,22 +9,31 @@ import LeftPanel from './LeftPanel';
 import MainFooter from './MainFooter';
 import * as actions from '../../MainStore/actions/index';
 import RightPanel from './RightPanel';
+import FilterBar from '../UI/FilterBar';
+import * as utils from '../../utilities/utils';
 
 
 const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
       justify: 'space-between',
-      maxHeight: '100vh',
+      maxHeight: '91vh',
       alignItems: 'stretch',
+      borderStyle: 'solid',
+      borderWidth: 2,
+      borderRadius: 16,
+      borderColor: theme.palette.background.primary,
     },
     header: {
       height: '12vh',
       margin: theme.spacing(1,0,0,1),
     },
-    content: {
-      height: '100vh',
+    maincontainer: {
+//      height: '100vh',
       margin: theme.spacing(0,0,1,1),
+      paddingTop: theme.spacing(2),
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
     },
     footer: {
         backgroundColor:'lightblue',
@@ -34,12 +43,12 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(2),
     },
     leftside: {
-      maxHeight: '100%',
+      maxHeight: '90vh',
       overflow: 'auto',
       margin: theme.spacing(0,0,1,1),
     },
     rightside: {
-      maxHeight: '100%',
+      maxHeight: '90vh',
       overflow: 'auto',
       margin: theme.spacing(1,1,1,1),
     },
@@ -48,7 +57,60 @@ const useStyles = makeStyles(theme => ({
 
 const MainLayout = (props) => {
 
-  function LoadContent(){
+
+  const [filter, setFilter] = useState('');
+  const [chips, setChips] = useState([])
+
+  // useEffect(() => {
+  //     console.log('[MAINLAYOUT] - useEffect : ', props.users); 
+  // },
+  // [props.users]
+  // )
+
+  const onChangeHandler = (chips) => {
+    setChips(chips);
+//      setFilter(search);
+  }
+
+  const onRequestSearchHandler = () => {
+    console.log('clicked', filter);
+  }
+
+
+  const Filter = () => {
+    return (
+      <FilterBar 
+      className={classes.filter}
+      onFilterChange={(chips) => onChangeHandler(chips)}
+      onClick={onRequestSearchHandler}
+      style={{
+        margin: "0 auto",
+        maxWidth: 800
+      }}
+      />
+    )
+  }
+
+  const Panels = () => {
+    return (
+      <Container className={classes.maincontainer}>
+        <Grid className={classes.root} container spacing={1}>
+          <Grid item xs={4}>
+            <div className={classes.leftside}>
+              {props.isAuthenticated && <LoadContent />}
+            </div>
+          </Grid>
+          <Grid item xs={8}>
+            <Container className={classes.rightside}>
+              {props.isAuthenticated && <RightPanel />}
+            </Container>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
+  
+  const LoadContent = () => {
     props.onUsersLoad();
     return (
       <LeftPanel />
@@ -56,28 +118,18 @@ const MainLayout = (props) => {
   }
 
     const classes = useStyles();
+
     return (
-        <React.Fragment>
-              <Grid className={classes.root} container spacing={1}>
-                    <Grid className={classes.root} item xs={4}>
-                      <Paper className={classes.leftside}>
-                          {props.isAuthenticated && <LoadContent /> }
-                      </Paper>
-                    </Grid>
-                    <Grid className={classes.root} item xs={8}>
-                      <Paper className={classes.rightside}>
-                          {props.isAuthenticated && <RightPanel /> }
-                      </Paper>
-                    </Grid>
-              </Grid>
-        </React.Fragment>
+      <React.Fragment>
+        { props.isAuthenticated && <Panels />}
+      </React.Fragment>
+
     )
 }
 
 const mapStateToProps = (state) => {
   return {
       isAuthenticated: state.auth.isAuthenticated,
-
   }
 }
 

@@ -17,6 +17,8 @@ import axios from '../../axios-atlas';
 import * as actions from '../../MainStore/actions/actionTypes';
 import * as utils from '../../utilities/utils';
 
+import {DropzoneArea} from 'material-ui-dropzone'
+
 const useStyles = makeStyles(theme => ({
     container: {
         backgroundColor: theme.palette.background.paper,
@@ -115,6 +117,9 @@ const UserProfile = (props) => {
     //     () =>       console.log('[User Profile] - State : ',profileState)
     // )
 
+    const handleDropZoneChange = () => {
+      console.log('dropzone changed !');
+    }
 
 
     return (
@@ -150,6 +155,14 @@ const UserProfile = (props) => {
                         <Typography className={classes.pos} color="textSecondary">
                             {profileState.email}
                         </Typography>
+                        <br />
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Avatar
+                        </Typography>
+                        <DropzoneArea 
+                          acceptedFiles={['image/jpeg', 'image/png', 'image/bmp']}
+                          onChange={handleDropZoneChange.bind()}
+                        />
                         <br />
                         <Button  
                             variant="contained" 

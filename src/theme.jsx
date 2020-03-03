@@ -13,12 +13,21 @@ const theme = createMuiTheme({
     error: {
       main: red.A400,
     },
+    default: {
+      white: '#fff',
+      black: '#000',
+    },
     background: {
       default: '#fff',
+      primary: '#ef702b',
+      secondary: '#b5856e',
       paper: '#eee',
-      grey1: '#aaa',
-      grey2: '#888',
-      white: '#fff',
+      greylight: '#aaa',
+      greydark: '#666',
+      yellowpaper: "#ffffee",
+      purplepaper: "#eeeeff",
+      greenpaper: '#eeeedd',
+      greypaper: '#eeeeee',
     },
   },
 });

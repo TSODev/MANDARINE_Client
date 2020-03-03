@@ -17,14 +17,19 @@ import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
-        maxWidth: 360,
+//        maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
+        borderRadius: theme.spacing(1),
       },
       nested: {
         paddingLeft: theme.spacing(4),
       },
       inline: {
         display: 'inline',
+      },
+      divider: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
       },
   }));
 
@@ -44,7 +49,11 @@ const useStyles = makeStyles(theme => ({
 
     return (
         <React.Fragment>
-        <ListItem button alignItems="flex-start" onClick={(user) => onItemClickHandler({theUser})}>
+        <ListItem 
+                button 
+                className={classes.root}
+                alignItems="flex-start" 
+                onClick={(user) => onItemClickHandler({theUser})}>
         <ListItemAvatar>
             <Avatar variant="rounded">{props.key}</Avatar>
         </ListItemAvatar>
@@ -70,7 +79,7 @@ const useStyles = makeStyles(theme => ({
             }
         />
         </ListItem>
-        <Divider variant="inset" component="li" />
+        <Divider className={classes.divider} variant="inset" component="li" />
         </React.Fragment>
     );
 }

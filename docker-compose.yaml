@@ -1,0 +1,9 @@
+version: '2'
+
+services: 
+  mandarine:
+    image: tsodev/mandarine-client:latest
+    ports: 
+      - '80:80'
+    environment: 
+      - WEBSERVER=nginx

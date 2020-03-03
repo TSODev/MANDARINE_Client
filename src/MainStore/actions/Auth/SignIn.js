@@ -29,6 +29,12 @@ export const signinSuccess = (authData) => {
     };
 };
 
+export const userResetMode = () => {
+    return {
+        type: actions.USER_MODE_VIEW,
+    }
+}
+
 export const signinFail = (error) => {
     return {
         type: actions.SIGNIN_FAIL,
@@ -52,6 +58,7 @@ export const signIn = (email, password) => {
         }
         axios.post('/login', userInfo)
             .then(response => {
+                dispatch(userResetMode());
                 dispatch(signinSuccess(response.data))
             })
             .catch(err => {

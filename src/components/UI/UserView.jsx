@@ -16,6 +16,8 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
+import Grow from '@material-ui/core/Grow';
+import Fade from '@material-ui/core/Fade';
 import * as actions from '../../MainStore/actions/index';
 import * as utils from '../../utilities/utils';
 
@@ -73,7 +75,11 @@ const useStyles = makeStyles(theme => ({
       paper: {
           padding: theme.spacing(1),
           boxShadow: 'none',
+      },
+      icon: {
+        height: 40,
       }
+
   }));
 
   const userReducer = (userState, action) => {
@@ -199,9 +205,53 @@ const useStyles = makeStyles(theme => ({
                 </Tooltip>
               </Box>
             </Box>
-            <Divider light />
           </React.Fragment>
         );
+    }
+
+    const EmptyUser = () => {
+      return (
+        <React.Fragment>
+          <Box display={"flex"}>
+            <Box p={2} flex={"auto"} className={classes.borderedGridStyles}>
+              <Tooltip title="Back">
+                <IconButton className={classes.icon}>
+
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Box>
+          <Card className={classes.card}>
+            <CardContent>
+              <Avatar className={classes.avatar} />
+              <Typography variant="h1" component="h2">
+                ______ ______
+              </Typography>
+              <Typography variant="h5" component="h6">
+                ______
+              </Typography>
+              <Typography className={classes.body} variant="body1"></Typography>
+              <Divider light />
+              <Grid item>
+                <Paper className={classes.paper}>
+                  <Typography variant="body1"> ----- </Typography>
+                </Paper>
+              </Grid>
+            </CardContent>
+            <Divider light />
+            <Box display={"flex"}>
+              <Box p={2} flex={"auto"} className={classes.borderedGridStyles}>
+                <p className={classes.statLabel}>.</p>
+                <p className={classes.statValue}>-</p>
+              </Box>
+              <Box p={2} flex={"auto"} className={classes.borderedGridStyles}>
+                <p className={classes.statLabel}>.</p>
+                <p className={classes.statValue}>-</p>
+              </Box>
+            </Box>
+          </Card>
+        </React.Fragment>
+      );
     }
 
     const UserDetails = () => {
@@ -212,6 +262,7 @@ const useStyles = makeStyles(theme => ({
             return (
                 <React.Fragment>
                     <UserDetailsAdminButtons />
+                    <Grow in={userState.modeView}>
                     <Card className={classes.card}>
                     <CardContent>
                         <Avatar className={classes.avatar} src={'https://i.pravatar.cc/300'} />
@@ -233,24 +284,13 @@ const useStyles = makeStyles(theme => ({
                         </Box>
                     </Box>
                     </Card>
+                    </Grow>
                 </React.Fragment>
             )
         } else {
-            return (
-                <React.Fragment>
-                <CssBaseline />
-                <Box display={'flex'}>
-
-                    </Box>
-                    <Divider light />
-                    <Card className={classes.card}>
-                    <CardContent>
-                        <Avatar className={classes.avatar}></Avatar>
-                        <Typography variant="h5" component="h6">Please select a user ...</Typography>
-                    </CardContent>
-                    </Card>
-              </React.Fragment>
-            )
+          return (
+            <EmptyUser />
+          )
         }
     }
 

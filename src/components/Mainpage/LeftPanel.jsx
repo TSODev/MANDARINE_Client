@@ -10,6 +10,8 @@ import Spinner from '../UI/Spinner';
 import UserCard from '../UI/UserCard';
 import FilterBar from '../UI/FilterBar';
 import { withTheme } from '@material-ui/styles';
+import { Divider } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 
 
 
@@ -17,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     root: {
         width: '100%',
         maxWidth: '100%',
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.default,
+        border: 0,
       },
       nested: {
         paddingLeft: theme.spacing(4),
@@ -26,7 +29,20 @@ const useStyles = makeStyles(theme => ({
         display: 'inline',
       },
       filterbar: {
-        backgroundColor: withTheme,
+        width: '100%',
+        maxWidth: '100%',
+      },
+      list: {
+        backgroundColor: theme.palette.background.default,
+      },
+      nav: {
+        backgroundColor: theme.palette.background.default,
+      },
+      list: {
+        backgroundColor: theme.palette.background.default,
+      },
+      divider: {
+        marginBottom: theme.spacing(1)
       }
   }));
 
@@ -34,6 +50,7 @@ const useStyles = makeStyles(theme => ({
   const LeftPanel = (props) => {
 
     const classes = useStyles();
+    const theme = useTheme();
 
     const [filter, setFilter] = useState('');
     const [chips, setChips] = useState([])
@@ -53,7 +70,7 @@ const useStyles = makeStyles(theme => ({
       console.log('clicked', filter);
     }
 
-    function UserList() {
+    const UserList = () => {
 //        const users = props.users.filter(user => utils.userFilter(user, filter));
         const users = props.users.filter(user => utils.filterUserByChips(user, chips));
 
@@ -86,7 +103,7 @@ const useStyles = makeStyles(theme => ({
     return (
       <React.Fragment>
         <FilterBar 
-          className={classes.filter}
+          className={classes.filterbar}
           onFilterChange={(chips) => onChangeHandler(chips)}
           onClick={onRequestSearchHandler}
           style={{
@@ -94,16 +111,19 @@ const useStyles = makeStyles(theme => ({
             maxWidth: 800
           }}
           />
+        <Divider className={classes.divider}/>
         <List
           component="nav"
           aria-labelledby="nested-list-subheader"
+          className={classes.nav}
           subheader={
             <ListSubheader
               component="div"
+              className={classes.div}
               id="nested-list-subheader"
             ></ListSubheader>
           }
-          className={classes.root}
+          className={classes.list}
         >
           <UserList />
         </List>

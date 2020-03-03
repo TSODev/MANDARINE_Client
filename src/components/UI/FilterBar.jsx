@@ -16,23 +16,24 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
+//    marginLeft: theme.spacing(1),
+    padding: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    height: 60,
+    width: '100%',
+    backgroundColor: theme.palette.background.secondary,
+    color: theme.palette.default.white,
+    borderRadius: theme.spacing(1),
+//    flex: 1,
   },
   iconButton: {
     padding: theme.spacing(1),
   },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
   chip: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
+    // display: 'flex',
+    // justifyContent: 'center',
+    width: 100,
+    margin: theme.spacing(0.5),
   },
 }));
 
@@ -105,7 +106,8 @@ const FilterBar= (props) =>  {
   }
 
   return (
-    <Paper component="form" className={classes.root}>
+    <React.Fragment>
+    {/* <Paper component="form" className={classes.root}> */}
       <FilterChips />
       <InputBase
         className={classes.input}
@@ -116,16 +118,17 @@ const FilterBar= (props) =>  {
         value={filter}
         autoFocus
       />
-      <IconButton 
+      {/* <IconButton 
         type="button" 
         className={classes.iconButton} 
         aria-label="search"
         onClick={onFilterSetClickHandler}
         >
         <FilterListIcon />
-      </IconButton>
-      <Divider className={classes.divider} orientation="vertical" />
-    </Paper>
+      </IconButton> */}
+    {/* </Paper>       */}
+    </React.Fragment>
+
   );
 }
 

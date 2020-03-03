@@ -45,6 +45,8 @@ const useStyles = makeStyles(theme => ({
         width: 60,
         height: 60,
         margin: 'auto',
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main
       },
       heading: {
         fontSize: 18,
@@ -76,10 +78,6 @@ const useStyles = makeStyles(theme => ({
         borderColor: 'rgba(0, 0, 0, 0.08)',
         height: '50%',
       },
-      paper: {
-          padding: theme.spacing(1),
-          boxShadow: 'none',
-      },
       modal: {
         display: "flex",
         alignItems: "center",
@@ -89,11 +87,9 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(8),
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
-      },
-      avatar: {
-        margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main
+        alignItems: "center",
+        padding: theme.spacing(1),
+        boxShadow: 'none',
       },
       form: {
         width: "100%", // Fix IE 11 issue.
@@ -125,7 +121,7 @@ const useStyles = makeStyles(theme => ({
 
 
     useEffect(() => {
-        console.log('[USEREDIT] - useEffect');
+        console.log('[USEREDIT] - useEffect', focusOn);
         if (focusOn === null) {
           firstnameRef.current.focus();
         } else {
@@ -135,7 +131,7 @@ const useStyles = makeStyles(theme => ({
         }; 
 
     },
-    [focusOn]
+    [focusOn, editedUser]
     )
 
 
@@ -183,10 +179,8 @@ const useStyles = makeStyles(theme => ({
     }
 
     const companyChangeHandler = (event) => {
-      console.log('on Change: ', companyRef.current.selectionStart);
       setEditedUser({...editedUser, company: event.target.value});
       setFocusOn(companyRef);
-      console.log('on Change: ', companyRef.current.selectionStart);
       setSelectionStart(companyRef.current.selectionStart);
     }
 
@@ -333,7 +327,7 @@ const useStyles = makeStyles(theme => ({
                         </Box>
                     </Box>
                     <Divider light />
-                    <UserEditForm />
+                        <UserEditForm />
                 </React.Fragment>
             )
 

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
@@ -24,21 +25,25 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1),
       },
     },
+    menu: {
+    },
     avatar: {
-        display: "flex",
-        alignItems: "center",
+//        display: "flex",
+//        alignItems: "center",
         margin: theme.spacing(1),
         backgroundColor: theme.palette.secondary.main
       },
     paper: {
+        minWidth: 300,
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
-        margin: theme.spacing(4),
+        padding: theme.spacing(4),
+        margin: theme.spacing(2),
       }  ,    
     card: {
-        minWidth: 350,
+        minWidth: 300,
+        margin: theme.spacing(2),
       },
     selected: {
         backgroundColor: theme.palette.background.default,
@@ -70,7 +75,7 @@ const UserProfileMenu = (props) => {
     }
 
     return (
-      <div>
+      <div className={classes.root}>
         <Menu
           className={classes.menu}
           id="menu-appbar"
@@ -88,21 +93,22 @@ const UserProfileMenu = (props) => {
           open={props.open}
           onClose={props.onClose}
         >
-          <Card>
-            <CardContent>
+
+            <Paper className={classes.paper}>
               <Avatar className={classes.avatar}>
                 <AccountCircle />
               </Avatar>
               <Typography component="h1" variant="h5">
                 <FullName />
               </Typography>
-            </CardContent>
-            <CardActions></CardActions>
-          </Card>
-          <MenuList>
-            <MenuItem divider={true} onClick={profileMenuHandler}>Profile</MenuItem>
-            <MenuItem onClick={disconnectHandler}> Disconnect</MenuItem>
-          </MenuList>
+
+            <MenuList>
+                <MenuItem divider={true} onClick={profileMenuHandler}>Profile</MenuItem>
+                <MenuItem onClick={disconnectHandler}> Disconnect</MenuItem>
+            </MenuList>
+            </Paper>
+
+
         </Menu>
       </div>
     );

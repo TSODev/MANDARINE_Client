@@ -26,25 +26,16 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
     },
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   button: {
     marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
   },
-  orange: {
-    color: theme.palette.getContrastText(deepOrange[500]),
-    backgroundColor: deepOrange[500],
-  },
-  blue: {
-    color: theme.palette.getContrastText(lightBlue[500]),
-    backgroundColor: lightBlue[500],
-  },
   container: {
     backgroundColor: theme.palette.background.default,
+    border: 2,
+    borderColor: theme.palette.background.secondary,
   },
   modal: {
     display: 'flex',
@@ -52,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.yellowpaper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -172,15 +163,6 @@ const NavigationAppBar = (props) => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-                    id="menu-mobile"
-                    edge="start" 
-                    className={classes.menuButton} 
-                    color="inherit" 
-                    aria-label="menu"
-                    onClick={menuButtonHandler}>
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" className={classes.title}>
             {props.appName}
           </Typography>
